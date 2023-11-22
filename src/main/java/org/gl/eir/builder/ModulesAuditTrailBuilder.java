@@ -18,7 +18,7 @@ public class ModulesAuditTrailBuilder {
         modulesAuditTrail.setStatusCode(statusCode);
         modulesAuditTrail.setStatus(status);
         modulesAuditTrail.setErrorMessage(errorMessage);
-        modulesAuditTrail.setFeatureName("Send SMS");
+        modulesAuditTrail.setFeatureName("AUDIT-REPORT");
         modulesAuditTrail.setModuleName(moduleName);
         modulesAuditTrail.setAction(action);
         modulesAuditTrail.setCount(0);
@@ -41,7 +41,7 @@ public class ModulesAuditTrailBuilder {
         modulesAuditTrail.setStatusCode(statusCode);
         modulesAuditTrail.setStatus(status);
         modulesAuditTrail.setErrorMessage(errorMessage);
-        modulesAuditTrail.setFeatureName("Send SMS");
+        modulesAuditTrail.setFeatureName("AUDIT-REPORT");
         modulesAuditTrail.setModuleName(moduleName);
         modulesAuditTrail.setAction(action);
         modulesAuditTrail.setInfo(info);

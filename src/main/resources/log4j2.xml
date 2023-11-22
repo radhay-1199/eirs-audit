@@ -28,7 +28,7 @@
         </Root>
 
         <!-- File Logger -->
-        <Logger name="org.gl.ceir" level="info" additivity="false">
+        <Logger name="org.gl.eir" level="info" additivity="false">
             <appender-ref ref="fileLogger" />
         </Logger>
     </Loggers>

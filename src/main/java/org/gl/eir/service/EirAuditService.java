@@ -152,9 +152,9 @@ public class EirAuditService implements Runnable{
             modulesAuditTrailRepository.save(tacAudit);
         } catch(Exception ex) {
             log.error("Exception in audit process: {}", ex);
-            Optional<CfgFeatureAlert> alert = cfgFeatureAlertRepository.findByAlertId("alert1304");
-            log.error("Raising alert1304");
-            System.out.println("Raising alert1304");
+            Optional<CfgFeatureAlert> alert = cfgFeatureAlertRepository.findByAlertId("1604");
+            log.error("Raising 1604");
+            System.out.println("Raising 1604");
             if (alert.isPresent()) {
                 raiseAnAlert(alert.get().getAlertId(), ex.getMessage(), featureName, 0);
             }
@@ -219,9 +219,9 @@ public class EirAuditService implements Runnable{
                 return list;
             } catch (IOException | CsvException e) {
                 log.error("Exception while downloading file for url: {}, {}", url, e);
-                Optional<CfgFeatureAlert> alert = cfgFeatureAlertRepository.findByAlertId("alert1302");
-                log.error("Raising alert1302");
-                System.out.println("Raising alert1302");
+                Optional<CfgFeatureAlert> alert = cfgFeatureAlertRepository.findByAlertId("1602");
+                log.error("Raising 1602");
+                System.out.println("Raising 1602");
                 if (alert.isPresent()) {
                     raiseAnAlert(alert.get().getAlertId(), url, featureName, 0);
                 }
@@ -230,18 +230,18 @@ public class EirAuditService implements Runnable{
             }
         } else if (responseCode == 406) {
             log.error("File not created yet for url: {}", url);
-            Optional<CfgFeatureAlert> alert = cfgFeatureAlertRepository.findByAlertId("alert1303");
-            log.error("Raising alert1303");
-            System.out.println("Raising alert1303");
+            Optional<CfgFeatureAlert> alert = cfgFeatureAlertRepository.findByAlertId("1603");
+            log.error("Raising 1603");
+            System.out.println("Raising 1603");
             if (alert.isPresent()) {
                 raiseAnAlert(alert.get().getAlertId(), url, featureName, 0);
             }
             return Collections.emptyList();
         } else {
             log.error("Error: HTTP Status " + responseCode);
-            Optional<CfgFeatureAlert> alert = cfgFeatureAlertRepository.findByAlertId("alert1302");
-            log.error("Raising alert1302");
-            System.out.println("Raising alert1302");
+            Optional<CfgFeatureAlert> alert = cfgFeatureAlertRepository.findByAlertId("1602");
+            log.error("Raising 1602");
+            System.out.println("Raising 1602");
             if (alert.isPresent()) {
                 raiseAnAlert(alert.get().getAlertId(), url, featureName, 0);
             }
@@ -277,9 +277,9 @@ public class EirAuditService implements Runnable{
                 return list;
             } catch (IOException | CsvException e) {
                 log.error("Exception while downloading file for url: {}, {}", url, e);
-                Optional<CfgFeatureAlert> alert = cfgFeatureAlertRepository.findByAlertId("alert1302");
-                log.error("Raising alert1302");
-                System.out.println("Raising alert1302");
+                Optional<CfgFeatureAlert> alert = cfgFeatureAlertRepository.findByAlertId("1602");
+                log.error("Raising 1602");
+                System.out.println("Raising 1602");
                 if (alert.isPresent()) {
                     raiseAnAlert(alert.get().getAlertId(), url, featureName, 0);
                 }
@@ -288,18 +288,18 @@ public class EirAuditService implements Runnable{
             }
         } else if (responseCode == 406) {
             log.error("File not created yet for url {}", url);
-            Optional<CfgFeatureAlert> alert = cfgFeatureAlertRepository.findByAlertId("alert1303");
-            log.error("Raising alert1303");
-            System.out.println("Raising alert1303");
+            Optional<CfgFeatureAlert> alert = cfgFeatureAlertRepository.findByAlertId("1603");
+            log.error("Raising 1603");
+            System.out.println("Raising 1603");
             if (alert.isPresent()) {
                 raiseAnAlert(alert.get().getAlertId(), url, featureName, 0);
             }
             return Collections.emptyList();
         } else {
             log.error("Error: HTTP Status " + responseCode);
-            Optional<CfgFeatureAlert> alert = cfgFeatureAlertRepository.findByAlertId("alert1302");
-            log.error("Raising alert1302");
-            System.out.println("Raising alert1302");
+            Optional<CfgFeatureAlert> alert = cfgFeatureAlertRepository.findByAlertId("1602");
+            log.error("Raising 1602");
+            System.out.println("Raising 1602");
             if (alert.isPresent()) {
                 raiseAnAlert(alert.get().getAlertId(), url, featureName, 0);
             }
