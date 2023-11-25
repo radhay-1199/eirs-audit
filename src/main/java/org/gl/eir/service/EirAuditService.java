@@ -29,7 +29,9 @@ import java.net.URL;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 @Service
@@ -141,7 +143,7 @@ public class EirAuditService implements Runnable{
                             log.info("File not found for list: " + listName);
                             continue;
                         }
-                        tacListSuccessCount = generateTacListReport(listName, serverName, eirsList.get(), eirList.get());
+                        tacListSuccessCount = generateTacListReport(listName, serverName, eirsList.get(), eirList.get(), configKey);
                     }
                 }
             } else {
@@ -180,8 +182,9 @@ public class EirAuditService implements Runnable{
     }
 
     public static String generateFileName(ListName listName, ListType type) {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd", Locale.ENGLISH);
-        String formattedDate = dateFormat.format(new Date());
+        LocalDate yesterday = LocalDate.now().minusDays(1);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd");
+        String formattedDate = yesterday.format(formatter);
         return listName + "_" + type + "_" + formattedDate + "\\d{2}\\.csv";
     }
 
@@ -352,14 +355,14 @@ public class EirAuditService implements Runnable{
         return count;
     }
 
-    public int generateTacListReport(ListName listType, String serverName, List<TacListDto> eirsList, List<TacListDto> eirList) throws IOException {
+    public int generateTacListReport(ListName listType, String serverName, List<TacListDto> eirsList, List<TacListDto> eirList, String configKey) throws IOException {
         int count = 0;
         // Create a timestamp for the report file name
         SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmm");
         String timestamp = sdf.format(new Date());
 
         // Define the file name for the report
-        String fileName = "eirs_report"+ "_" + serverName + "_" + listType + "_" + timestamp + ".csv";
+        String fileName = "eirs_report"+ "_" + configKey + "_" + serverName + "_" + listType + "_" + timestamp + ".csv";
         Path filePath = Paths.get(csvFilePath).resolve(fileName);
 
         try (FileWriter writer = new FileWriter(filePath.toString());
@@ -376,7 +379,7 @@ public class EirAuditService implements Runnable{
             csvPrinter.flush();
         }
 
-        String eirFileName = "eir_report"+ "_" + serverName + "_" + listType + "_" + timestamp + ".csv";
+        String eirFileName = "eir_report"+ "_" + configKey + "_" + serverName + "_" + listType + "_" + timestamp + ".csv";
         Path eirFilePath = Paths.get(csvFilePath).resolve(eirFileName);
 
         try (FileWriter writer = new FileWriter(eirFilePath.toString());
