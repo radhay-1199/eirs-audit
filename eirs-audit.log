@@ -1,0 +1,92 @@
+[INFO ] 2023-12-01 00:56:25.243 [main] EirAudit - Starting EirAudit using Java 11.0.17 on Radhays-Mac.local with PID 23402 (/Users/radhay.anand/radhay-workspace/eirs-audit/target/classes started by radhay.anand in /Users/radhay.anand/radhay-workspace/eirs-audit)
+[INFO ] 2023-12-01 00:56:25.245 [main] EirAudit - No active profile set, falling back to 1 default profile: "default"
+[INFO ] 2023-12-01 00:56:26.691 [main] EirAudit - Started EirAudit in 1.645 seconds (JVM running for 2.326)
+[ERROR] 2023-12-01 00:56:51.284 [Thread-1] EirAuditService - Exception in audit process: {}
+com.jcraft.jsch.JSchException: java.net.SocketException: Network is unreachable (connect failed)
+	at com.jcraft.jsch.Util.createSocket(Util.java:349) ~[jsch-0.1.55.jar:?]
+	at com.jcraft.jsch.Session.connect(Session.java:215) ~[jsch-0.1.55.jar:?]
+	at com.jcraft.jsch.Session.connect(Session.java:183) ~[jsch-0.1.55.jar:?]
+	at org.gl.eir.service.SftpService.downloadAndSaveTacFile(SftpService.java:127) ~[classes/:?]
+	at org.gl.eir.service.EirAuditService.run(EirAuditService.java:131) [classes/:?]
+	at java.lang.Thread.run(Thread.java:829) [?:?]
+Caused by: java.net.SocketException: Network is unreachable (connect failed)
+	at java.net.PlainSocketImpl.socketConnect(Native Method) ~[?:?]
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:412) ~[?:?]
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:255) ~[?:?]
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:237) ~[?:?]
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392) ~[?:?]
+	at java.net.Socket.connect(Socket.java:609) ~[?:?]
+	at java.net.Socket.connect(Socket.java:558) ~[?:?]
+	at java.net.Socket.<init>(Socket.java:454) ~[?:?]
+	at java.net.Socket.<init>(Socket.java:231) ~[?:?]
+	at com.jcraft.jsch.Util.createSocket(Util.java:343) ~[jsch-0.1.55.jar:?]
+	... 5 more
+[INFO ] 2023-12-01 00:57:48.085 [main] EirAudit - Starting EirAudit using Java 11.0.17 on Radhays-Mac.local with PID 23974 (/Users/radhay.anand/radhay-workspace/eirs-audit/target/classes started by radhay.anand in /Users/radhay.anand/radhay-workspace/eirs-audit)
+[INFO ] 2023-12-01 00:57:48.087 [main] EirAudit - No active profile set, falling back to 1 default profile: "default"
+[INFO ] 2023-12-01 00:57:49.672 [main] EirAudit - Started EirAudit in 1.79 seconds (JVM running for 2.743)
+[ERROR] 2023-12-01 00:58:14.277 [Thread-1] EirAuditService - Exception in audit process: {}
+com.jcraft.jsch.JSchException: java.net.SocketException: Network is unreachable (connect failed)
+	at com.jcraft.jsch.Util.createSocket(Util.java:349) ~[jsch-0.1.55.jar:?]
+	at com.jcraft.jsch.Session.connect(Session.java:215) ~[jsch-0.1.55.jar:?]
+	at com.jcraft.jsch.Session.connect(Session.java:183) ~[jsch-0.1.55.jar:?]
+	at org.gl.eir.service.SftpService.downloadAndSaveTacFile(SftpService.java:127) ~[classes/:?]
+	at org.gl.eir.service.EirAuditService.run(EirAuditService.java:131) [classes/:?]
+	at java.lang.Thread.run(Thread.java:829) [?:?]
+Caused by: java.net.SocketException: Network is unreachable (connect failed)
+	at java.net.PlainSocketImpl.socketConnect(Native Method) ~[?:?]
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:412) ~[?:?]
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:255) ~[?:?]
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:237) ~[?:?]
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392) ~[?:?]
+	at java.net.Socket.connect(Socket.java:609) ~[?:?]
+	at java.net.Socket.connect(Socket.java:558) ~[?:?]
+	at java.net.Socket.<init>(Socket.java:454) ~[?:?]
+	at java.net.Socket.<init>(Socket.java:231) ~[?:?]
+	at com.jcraft.jsch.Util.createSocket(Util.java:343) ~[jsch-0.1.55.jar:?]
+	... 5 more
+[INFO ] 2023-12-01 00:59:04.865 [main] EirAudit - Starting EirAudit using Java 11.0.17 on Radhays-Mac.local with PID 24143 (/Users/radhay.anand/radhay-workspace/eirs-audit/target/classes started by radhay.anand in /Users/radhay.anand/radhay-workspace/eirs-audit)
+[INFO ] 2023-12-01 00:59:04.868 [main] EirAudit - No active profile set, falling back to 1 default profile: "default"
+[INFO ] 2023-12-01 00:59:06.636 [main] EirAudit - Started EirAudit in 2.239 seconds (JVM running for 3.155)
+[ERROR] 2023-12-01 00:59:12.881 [Thread-1] EirAuditService - Exception in audit process: {}
+com.jcraft.jsch.JSchException: java.net.SocketException: Network is unreachable (connect failed)
+	at com.jcraft.jsch.Util.createSocket(Util.java:349) ~[jsch-0.1.55.jar:?]
+	at com.jcraft.jsch.Session.connect(Session.java:215) ~[jsch-0.1.55.jar:?]
+	at com.jcraft.jsch.Session.connect(Session.java:183) ~[jsch-0.1.55.jar:?]
+	at org.gl.eir.service.SftpService.downloadAndSaveFile(SftpService.java:41) ~[classes/:?]
+	at org.gl.eir.service.EirAuditService.run(EirAuditService.java:92) [classes/:?]
+	at java.lang.Thread.run(Thread.java:829) [?:?]
+Caused by: java.net.SocketException: Network is unreachable (connect failed)
+	at java.net.PlainSocketImpl.socketConnect(Native Method) ~[?:?]
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:412) ~[?:?]
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:255) ~[?:?]
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:237) ~[?:?]
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392) ~[?:?]
+	at java.net.Socket.connect(Socket.java:609) ~[?:?]
+	at java.net.Socket.connect(Socket.java:558) ~[?:?]
+	at java.net.Socket.<init>(Socket.java:454) ~[?:?]
+	at java.net.Socket.<init>(Socket.java:231) ~[?:?]
+	at com.jcraft.jsch.Util.createSocket(Util.java:343) ~[jsch-0.1.55.jar:?]
+	... 5 more
+[INFO ] 2023-12-01 01:00:07.267 [main] EirAudit - Starting EirAudit using Java 11.0.17 on Radhays-Mac.local with PID 24273 (/Users/radhay.anand/radhay-workspace/eirs-audit/target/classes started by radhay.anand in /Users/radhay.anand/radhay-workspace/eirs-audit)
+[INFO ] 2023-12-01 01:00:07.269 [main] EirAudit - No active profile set, falling back to 1 default profile: "default"
+[INFO ] 2023-12-01 01:00:09.095 [main] EirAudit - Started EirAudit in 2.051 seconds (JVM running for 2.711)
+[ERROR] 2023-12-01 01:00:29.975 [Thread-1] EirAuditService - Exception in audit process: {}
+com.jcraft.jsch.JSchException: java.net.SocketException: Network is unreachable (connect failed)
+	at com.jcraft.jsch.Util.createSocket(Util.java:349) ~[jsch-0.1.55.jar:?]
+	at com.jcraft.jsch.Session.connect(Session.java:215) ~[jsch-0.1.55.jar:?]
+	at com.jcraft.jsch.Session.connect(Session.java:183) ~[jsch-0.1.55.jar:?]
+	at org.gl.eir.service.SftpService.downloadAndSaveFile(SftpService.java:41) ~[classes/:?]
+	at org.gl.eir.service.EirAuditService.run(EirAuditService.java:92) [classes/:?]
+	at java.lang.Thread.run(Thread.java:829) [?:?]
+Caused by: java.net.SocketException: Network is unreachable (connect failed)
+	at java.net.PlainSocketImpl.socketConnect(Native Method) ~[?:?]
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:412) ~[?:?]
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:255) ~[?:?]
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:237) ~[?:?]
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392) ~[?:?]
+	at java.net.Socket.connect(Socket.java:609) ~[?:?]
+	at java.net.Socket.connect(Socket.java:558) ~[?:?]
+	at java.net.Socket.<init>(Socket.java:454) ~[?:?]
+	at java.net.Socket.<init>(Socket.java:231) ~[?:?]
+	at com.jcraft.jsch.Util.createSocket(Util.java:343) ~[jsch-0.1.55.jar:?]
+	... 5 more

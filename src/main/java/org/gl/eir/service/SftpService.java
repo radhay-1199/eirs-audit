@@ -21,7 +21,7 @@ public class SftpService {
     @Autowired
     SftpConfigurations sftpConfigurations;
 
-    public Optional<List<ListDto>> downloadAndSaveFile(String datePatternRegex) {
+    public Optional<List<ListDto>> downloadAndSaveFile(String datePatternRegex) throws JSchException, SftpException, IOException {
         String sftpServer = sftpConfigurations.getSftpServer();
         int sftpPort = sftpConfigurations.getSftpPort();
         String sftpUsername = sftpConfigurations.getSftpUsername();
@@ -95,6 +95,7 @@ public class SftpService {
 
         } catch (JSchException | SftpException | IOException e) {
             e.printStackTrace(); // Handle exceptions appropriately
+            throw e;
         } finally {
             if (sftpChannel != null) {
                 sftpChannel.disconnect();
@@ -107,7 +108,7 @@ public class SftpService {
     }
 
 
-    public Optional<List<TacListDto>> downloadAndSaveTacFile(String datePatternRegex) {
+    public Optional<List<TacListDto>> downloadAndSaveTacFile(String datePatternRegex) throws JSchException, SftpException, IOException {
         String sftpServer = sftpConfigurations.getSftpServer();
         int sftpPort = sftpConfigurations.getSftpPort();
         String sftpUsername = sftpConfigurations.getSftpUsername();
@@ -166,6 +167,7 @@ public class SftpService {
 
         } catch (JSchException | SftpException | IOException e) {
             e.printStackTrace(); // Handle exceptions appropriately
+            throw e;
         } finally {
             if (sftpChannel != null) {
                 sftpChannel.disconnect();
