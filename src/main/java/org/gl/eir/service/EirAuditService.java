@@ -317,40 +317,39 @@ public class EirAuditService implements Runnable{
         String timestamp = sdf.format(new Date());
 
         // for eirs
-        String eirsFileName = "eirs_report"+ "_" + configKey + "_" + serverName + "_" + listType + "_" + timestamp + ".csv";
-        Path eirsFilePath = Paths.get(csvFilePath).resolve(eirsFileName);
+        String eirsFileName = "report" + "_" + configKey + "_" + serverName + "_" + listType + "_" + timestamp + ".csv";
+        Path filePath = Paths.get(csvFilePath).resolve(eirsFileName);
 
-        try (FileWriter writer = new FileWriter(eirsFilePath.toString());
+        try (FileWriter writer = new FileWriter(filePath.toString());
              CSVPrinter csvPrinter = new CSVPrinter(writer, CSVFormat.DEFAULT
-                     .withHeader("serverName", "eirsEntry", "comparison"))) {
+                     .withHeader("serverName", "entry", "result"))) {
 
             for (ListDto eirsEntry : eirsList) {
                 boolean foundInEirList = eirList.contains(eirsEntry);
-                int comparison = foundInEirList ? 0 : 1;
+                if (foundInEirList) {
+                    // Entry present in both lists, skip
+                    continue;
+                }
+
+                int comparison = eirList.contains(eirsEntry) ? 0 : 1;
                 csvPrinter.printRecord(serverName, eirsEntry.toString(), comparison);
+                count++;
+            }
+
+            for (ListDto eirEntry : eirList) {
+                boolean foundInEirsList = eirsList.contains(eirEntry);
+                if (foundInEirsList) {
+                    // Entry present in both lists, skip
+                    continue;
+                }
+
+                int comparison = eirsList.contains(eirEntry) ? 0 : 2;
+                csvPrinter.printRecord(serverName, eirEntry.toString(), comparison);
                 count++;
             }
 
             csvPrinter.flush();
         }
-
-            //for eir
-            String eirFileName = "eir_report" + "_" + configKey + "_" + serverName + "_" + listType + "_" + timestamp + ".csv";
-            Path eirFilePath = Paths.get(csvFilePath).resolve(eirFileName);
-
-            try (FileWriter eirWriter = new FileWriter(eirFilePath.toString());
-                 CSVPrinter eirCsvPrinter = new CSVPrinter(eirWriter, CSVFormat.DEFAULT
-                         .withHeader("serverName", "eirEntry", "comparison"))) {
-
-                for (ListDto eirEntry : eirList) {
-                    boolean foundInEirsList = eirsList.contains(eirEntry);
-                    int comparison = foundInEirsList ? 0 : 1;
-                    eirCsvPrinter.printRecord(serverName, eirEntry.toString(), comparison);
-                    count++;
-                }
-
-                eirCsvPrinter.flush();
-            }
 
         return count;
     }
@@ -362,35 +361,27 @@ public class EirAuditService implements Runnable{
         String timestamp = sdf.format(new Date());
 
         // Define the file name for the report
-        String fileName = "eirs_report"+ "_" + configKey + "_" + serverName + "_" + listType + "_" + timestamp + ".csv";
+        String fileName = "report"+ "_" + configKey + "_" + serverName + "_" + listType + "_" + timestamp + ".csv";
         Path filePath = Paths.get(csvFilePath).resolve(fileName);
 
         try (FileWriter writer = new FileWriter(filePath.toString());
              CSVPrinter csvPrinter = new CSVPrinter(writer, CSVFormat.DEFAULT
-                     .withHeader("serverName", "eirsEntry", "comparison"))) {
+                     .withHeader("serverName", "entry", "result"))) {
 
             for (TacListDto eirsEntry : eirsList) {
                 boolean foundInEirList = eirList.contains(eirsEntry);
-                int comparison = foundInEirList ? 0: 1;
-                csvPrinter.printRecord(serverName, eirsEntry.toString(), comparison);
-                count++;
+                if (!foundInEirList) {
+                    csvPrinter.printRecord(serverName, eirsEntry.toString(), 1);
+                    count++;
+                }
             }
-
-            csvPrinter.flush();
-        }
-
-        String eirFileName = "eir_report"+ "_" + configKey + "_" + serverName + "_" + listType + "_" + timestamp + ".csv";
-        Path eirFilePath = Paths.get(csvFilePath).resolve(eirFileName);
-
-        try (FileWriter writer = new FileWriter(eirFilePath.toString());
-             CSVPrinter csvPrinter = new CSVPrinter(writer, CSVFormat.DEFAULT
-                     .withHeader("serverName", "eirEntry", "comparison"))) {
 
             for (TacListDto eirEntry : eirList) {
                 boolean foundInEirsList = eirsList.contains(eirEntry);
-                int comparison = foundInEirsList ? 0: 1;
-                csvPrinter.printRecord(serverName, eirEntry.toString(), comparison);
-                count++;
+                if (!foundInEirsList) {
+                    csvPrinter.printRecord(serverName, eirEntry.toString(), 2);
+                    count++;
+                }
             }
 
             csvPrinter.flush();
