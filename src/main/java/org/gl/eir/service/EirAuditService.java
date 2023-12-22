@@ -322,7 +322,7 @@ public class EirAuditService implements Runnable{
 
         try (FileWriter writer = new FileWriter(filePath.toString());
              CSVPrinter csvPrinter = new CSVPrinter(writer, CSVFormat.DEFAULT
-                     .withHeader("serverName", "entry", "result"))) {
+                     .withHeader("serverName", "imei", "imsi", "msisdn", "result"))) {
 
             for (ListDto eirsEntry : eirsList) {
                 boolean foundInEirList = eirList.contains(eirsEntry);
@@ -332,7 +332,7 @@ public class EirAuditService implements Runnable{
                 }
 
                 int comparison = eirList.contains(eirsEntry) ? 0 : 1;
-                csvPrinter.printRecord(serverName, eirsEntry.toString(), comparison);
+                csvPrinter.printRecord(serverName, eirsEntry.getImei(), eirsEntry.getImsi(), eirsEntry.getMsisdn(), comparison);
                 count++;
             }
 
@@ -344,7 +344,7 @@ public class EirAuditService implements Runnable{
                 }
 
                 int comparison = eirsList.contains(eirEntry) ? 0 : 2;
-                csvPrinter.printRecord(serverName, eirEntry.toString(), comparison);
+                csvPrinter.printRecord(serverName, eirEntry.getImei(), eirEntry.getImsi(), eirEntry.getMsisdn(), comparison);
                 count++;
             }
 
@@ -366,12 +366,11 @@ public class EirAuditService implements Runnable{
 
         try (FileWriter writer = new FileWriter(filePath.toString());
              CSVPrinter csvPrinter = new CSVPrinter(writer, CSVFormat.DEFAULT
-                     .withHeader("serverName", "entry", "result"))) {
-
+                     .withHeader("serverName", "tac", "result"))) {
             for (TacListDto eirsEntry : eirsList) {
                 boolean foundInEirList = eirList.contains(eirsEntry);
                 if (!foundInEirList) {
-                    csvPrinter.printRecord(serverName, eirsEntry.toString(), 1);
+                    csvPrinter.printRecord(serverName, eirsEntry.getTac(), 1);
                     count++;
                 }
             }
@@ -379,7 +378,7 @@ public class EirAuditService implements Runnable{
             for (TacListDto eirEntry : eirList) {
                 boolean foundInEirsList = eirsList.contains(eirEntry);
                 if (!foundInEirsList) {
-                    csvPrinter.printRecord(serverName, eirEntry.toString(), 2);
+                    csvPrinter.printRecord(serverName, eirEntry.getTac(), 2);
                     count++;
                 }
             }

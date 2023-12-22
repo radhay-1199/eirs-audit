@@ -12,4 +12,12 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class TacListDto {
     String tac;
+
+    public String getTac() {
+        return tac;
+    }
+
+    public void setTac(String tac) {
+        this.tac = tac;
+    }
 }
